@@ -9,3 +9,4 @@ tested only on jee mains 2021 1st attempt. should work on the rest as well.
 
 # not working?
 make an issue or try fixing it yourself.
+im new to this coding stuff so theres a lot of spaghetti code
