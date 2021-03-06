@@ -8,14 +8,14 @@ outfile = ''
 #   OPTIONS
 ###########
 
-#uncomment for output
-#outfile = open('./jee txts/outputFinal1.txt', 'w')
+# output file path
+outfile = open('./output/outputFinal.txt', 'w')
 
 #PATH TO INPUT ANSWER KEY FILE
-inputkey = list(open('./jee txts/input mains1 answer key.txt', 'r'))
+inputkey = list(open('./input/inputKey.txt', 'r'))
 
 #PATH TO INPUT MARKED ANSWERS FILE
-inputmy = list(open('./jee txts/input mains1 marked answers.txt', 'r'))
+inputmy = list(open('./input/inputMy.txt', 'r'))
 
 
 ##############
