@@ -98,11 +98,13 @@ def mychop(text):
 					#print(chop+' '+chop2+' '+chop3)
 					outmy.append(chop+' '+chop2+' '+chop3)
 
-					if __name__ == '__main__':
-				if chop and chop2 and chop4:
-					print(chop+' '+chop2+' '+chop4 , file = out)
-				elif chop and chop2 and chop3:
-					print(chop+' '+chop2+' '+chop3 , file = out)
+				if __name__ == '__main__':
+					if chop and chop2 and chop4:
+						print(chop+' '+chop2+' '+chop4 , file = out)
+						print(chop+' '+chop2+' '+chop4)
+					elif chop and chop2 and chop3:
+						print(chop+' '+chop2+' '+chop3 , file = out)
+						print(chop+' '+chop2+' '+chop3)
 	
 	return outmy
 
