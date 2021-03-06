@@ -37,8 +37,8 @@ def keychop(text):
 					
 			chop = chop+' ans- '+ line[ isitthere : ]
 			chop=chop[ : chop.find(chopat) ]
-            if __name__ == '__main__':
-			    print(chop , file = out)
+			if __name__ == '__main__':
+				print(chop , file = out)
 			#print(chop)
 			outkey.append(chop)
 	#print(outkey)
