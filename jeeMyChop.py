@@ -6,8 +6,9 @@ if __name__ == '__main__':
 
 def mychop(text):
 	
-	#output in file
-	out = open('./output/outputMy.txt', 'w')
+	if __name__ == '__main__':
+		#output in file
+		out = open('./output/outputMy.txt', 'w')
 	
 	#question id
 	findthis='Question ID :</td><td class="bold">'
