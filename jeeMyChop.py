@@ -1,13 +1,13 @@
 
 if __name__ == '__main__':
 	#PATH TO MARKED ANSWERS FILE
-	text = list(open('/storage/emulated/0/0Python/jee txts/input mains1 marked answers.txt', 'r'))
+	text = list(open('./input/inputMy.txt', 'r'))
 	
 
 def mychop(text):
 	
 	#output in file
-	####out = open('/storage/emulated/0/0Python/jee txts/outputMyAnswers1.txt', 'w')
+	out = open('./output/outputMy.txt', 'w')
 	
 	#question id
 	findthis='Question ID :</td><td class="bold">'
@@ -97,11 +97,12 @@ def mychop(text):
 				elif chop and chop2 and chop3:
 					#print(chop+' '+chop2+' '+chop3)
 					outmy.append(chop+' '+chop2+' '+chop3)
-	
-	####			if chop and chop2 and chop4:
-	####				print(chop+' '+chop2+' '+chop4 , file = out)
-	####			elif chop and chop2 and chop3:
-	####				print(chop+' '+chop2+' '+chop3 , file = out)
+
+					if __name__ == '__main__':
+				if chop and chop2 and chop4:
+					print(chop+' '+chop2+' '+chop4 , file = out)
+				elif chop and chop2 and chop3:
+					print(chop+' '+chop2+' '+chop3 , file = out)
 	
 	return outmy
 
