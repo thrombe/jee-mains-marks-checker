@@ -13,7 +13,8 @@ def keychop(text):
 	
 	outkey = []
 	
-	out = open('./output/outputKey.txt', 'w')
+	if __name__ == '__main__':
+		out = open('./output/outputKey.txt', 'w')
 	
 	
 	for line in text:
