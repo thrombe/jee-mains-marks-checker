@@ -59,7 +59,8 @@ def mychop(text):
 					chop2 = chop2[ : chop2.find(chopat)]
 				
 				if chop2 == 'Not Answered':
-	####				print(chop+' '+chop2, file = out)
+					if __name__ == '__main__':
+						print(chop+' '+chop2, file = out)
 					#print(chop+' '+chop2)
 					outmy.append(chop+' '+chop2)
 					continue
