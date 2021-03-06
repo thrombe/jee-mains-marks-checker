@@ -1,7 +1,7 @@
 
 if __name__ == '__main__':
 	#PATH TO ANSWER KEY FILE
-	text = list(open('/storage/emulated/0/0Python/jee txts/input mains1 answer key.txt', 'r'))
+	text = list(open('./input/inputKey.txt', 'r'))
 
 
 
@@ -13,7 +13,7 @@ def keychop(text):
 	
 	outkey = []
 	
-	####out = open('/storage/emulated/0/0Python/jee txts/outputKey1.txt', 'w')
+	out = open('./output/outputKey.txt', 'w')
 	
 	
 	for line in text:
@@ -37,7 +37,8 @@ def keychop(text):
 					
 			chop = chop+' ans- '+ line[ isitthere : ]
 			chop=chop[ : chop.find(chopat) ]
-			####print(chop , file = out)
+            if __name__ == '__main__':
+			    print(chop , file = out)
 			#print(chop)
 			outkey.append(chop)
 	#print(outkey)
