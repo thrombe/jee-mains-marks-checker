@@ -3,6 +3,8 @@ from jeeMyChop import mychop
 from jeeKeyChop import keychop
 from search_and_chop_adv import chopstr, chopall
 outfile = ''
+inputkey = ''
+inputFinalKey = ''
 
 ###########
 #   OPTIONS
@@ -16,6 +18,9 @@ inputkey = list(open('./input/inputKey.txt', 'r'))
 
 #PATH TO INPUT MARKED ANSWERS FILE
 inputmy = list(open('./input/inputMy.txt', 'r'))
+
+#PATH TO FINAL ANSWER KEY FILE
+inputFinalKey = list(open('./input/inputFinalKey.txt', 'r'))
 
 
 ##############
@@ -43,7 +48,31 @@ for i in range(len(options)):
 	options[i] = options[i].split(' ')
 
 
-key = keychop(inputkey)
+#NOT FINAL KEY
+if inputkey:
+	key = keychop(inputkey)
+	
+#FINAL KEY
+if inputFinalKey:
+	ans = inputFinalKey
+	final = []
+	for i in range(len(ans)):
+		ans[i] = ans[i].strip('\n')
+		ans[i] = ans[i].split(' ')
+		if ans[i][1] == 'D':
+			ans[i][1] = 'Drop'
+		if ans[i][0].isdigit():
+			final.append(ans[i])
+	#print(len(final), '\n', final)
+	outputlist = []
+	for i in range((len(final))):
+		outputlist.append(final[i][0]+' ans- '+final[i][1])
+	#print(len(outputlist) , '\n' , outputlist)
+	key = outputlist
+
+
+
+
 marked = mychop(inputmy)
 
 ###
