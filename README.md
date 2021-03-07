@@ -5,6 +5,8 @@ the jee mains 2021 answer key was very annoying to check manually, so i made thi
 1. Save HTML of ANSWER_CORRECTION_PAGE as inputKey.txt, inside input folder.
 
 2. Save HTML of RESPONSE_SHEET as inputMy.txt inside input folder.
+                    AND/OR (preferance given to the later)
+    Save the text from the pdf of the final answer key in inputFinalKey.txt
 
 3. run python jeeMerge.py
 
