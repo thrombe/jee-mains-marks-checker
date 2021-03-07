@@ -124,6 +124,7 @@ correct = 0
 incorrectObj = 0
 left = -15
 incorrectInt = 0
+dropped = 0
 for e in range(len(evaluate)):
 	#print(len(evaluate))
 	#print(evaluate[e])
@@ -136,6 +137,10 @@ for e in range(len(evaluate)):
 	elif evaluate[e][3] != evaluate[e][6] and (evaluate[e][6] == 'A' or evaluate[e][6] == 'B' or evaluate[e][6] == 'C' or evaluate[e][6] == 'D'):
 		score += -1
 		incorrectObj += 1
+		
+	elif evaluate[e][6] == 'Drop' :
+			dropped += 1
+	
 	#print(type(evaluate[e][2]))
 	
 #print(evaluate)
@@ -146,6 +151,8 @@ print('CORRECT: '+str(correct))
 print('INCORRECT OBJECTIVE: '+str(incorrectObj))
 print('INCORRECT INT TYPE: '+incorrectInt)
 print('LEFT: '+str(left))
+if dropped:
+	print('ATTEMPTED BUT DROPPED: '+str(dropped)+'  idk if these would add to total score')
 
 print('\n'*4 , file = outfile)
 print('SCORE: '+str(score) , file = outfile)
@@ -153,3 +160,5 @@ print('CORRECT: '+str(correct) , file = outfile)
 print('INCORRECT OBJECTIVE: '+str(incorrectObj) , file = outfile)
 print('INCORRECT INT TYPE: '+incorrectInt , file = outfile)
 print('LEFT: '+str(left) , file = outfile)
+if dropped:
+	print('ATTEMPTED BUT DROPPED: '+str(dropped)+'  idk if these would add to total score' , file = outfile)
