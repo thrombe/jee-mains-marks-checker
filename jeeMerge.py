@@ -1,6 +1,9 @@
+import time
+start = time.time()
+
 
 from jeeMyChop import mychop
-from jeeKeyChop import keychop
+#from jeeKeyChop import keychop
 from search_and_chop_adv import chopstr, chopall
 outfile = ''
 inputkey = ''
@@ -20,8 +23,10 @@ inputkey = list(open('./input/inputKey.txt', 'r'))
 inputmy = list(open('./input/inputMy.txt', 'r'))
 
 #PATH TO FINAL ANSWER KEY FILE
-inputFinalKey = list(open('./input/inputFinalKey.txt', 'r'))
+#inputFinalKey = list(open('./input/inputFinalKey.txt', 'r'))
 
+#PATH TO FINAL FINAL KEY
+#inputFinalKey = list(open('./input/inputFinalFinalKey.txt', 'r'))
 
 ##############
 #   IGNORE
@@ -48,10 +53,16 @@ for i in range(len(options)):
 	options[i] = options[i].split(' ')
 
 
+
 #NOT FINAL KEY
-if inputkey:
-	key = keychop(inputkey)
-	
+#if inputkey:
+#	key = keychop(inputkey)
+inputkey[0] = inputkey[0].replace(' ', '')
+findthis = [ ['uestionNo">', '<', 'line', 0], [ 'nswer">', '<', 'end', 0] ]
+inputkey = chopall(inputkey, findthis)
+key = inputkey
+
+
 #FINAL KEY
 if inputFinalKey:
 	ans = inputFinalKey
@@ -77,7 +88,7 @@ marked = mychop(inputmy)
 
 ###
 for k in range(len(key)):
-	key[k] = key[k].split(' ans- ')
+	key[k] = key[k].split(' ')
 	
 	for o in range(len(options)):
 		#print(len(options))
@@ -142,6 +153,11 @@ for e in range(len(evaluate)):
 			dropped += 1
 	
 	#print(type(evaluate[e][2]))
+
+totalDrop = 0
+for e in range(len(evaluate)):
+	if evaluate[e][6] == 'Drop':
+		totalDrop += 1
 	
 #print(evaluate)
 print('\n'*4)
@@ -151,14 +167,22 @@ print('CORRECT: '+str(correct))
 print('INCORRECT OBJECTIVE: '+str(incorrectObj))
 print('INCORRECT INT TYPE: '+incorrectInt)
 print('LEFT: '+str(left))
+if totalDrop:
+	print('TOTAL DROPPED QUESTIONS: '+str(totalDrop))
 if dropped:
 	print('ATTEMPTED BUT DROPPED: '+str(dropped)+'  idk if these would add to total score')
 
-print('\n'*4 , file = outfile)
-print('SCORE: '+str(score) , file = outfile)
-print('CORRECT: '+str(correct) , file = outfile)
-print('INCORRECT OBJECTIVE: '+str(incorrectObj) , file = outfile)
-print('INCORRECT INT TYPE: '+incorrectInt , file = outfile)
-print('LEFT: '+str(left) , file = outfile)
-if dropped:
-	print('ATTEMPTED BUT DROPPED: '+str(dropped)+'  idk if these would add to total score' , file = outfile)
+if outfile:
+    print('\n'*4 , file = outfile)
+    print('SCORE: '+str(score) , file = outfile)
+    print('CORRECT: '+str(correct) , file = outfile)
+    print('INCORRECT OBJECTIVE: '+str(incorrectObj) , file = outfile)
+    print('INCORRECT INT TYPE: '+incorrectInt , file = outfile)
+    print('LEFT: '+str(left) , file = outfile)
+    if totalDrop:
+    	print('TOTAL DROPPED QUESTIONS: '+str(totalDrop) , file = outfile)
+    if dropped:
+    	print('ATTEMPTED BUT DROPPED: '+str(dropped)+'  idk if these would add to total score' , file = outfile)
+    
+
+#print(str(time.time()-start))

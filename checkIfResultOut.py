@@ -1,6 +1,6 @@
 #checks the nta site for updates, like result. and stores the info in a file to compare to when you check next time.
 #link is https://ntaresults.nic.in/NTARESULTS_CMS/Page/Page?PageId=1&LangId=P
-
+#link2 https://jeemain.nta.nic.in/webinfo2021/Page/Page?PageId=1&LangId=P
 
 #pip install httplib2
 #pip install beautifulsoup4
@@ -11,7 +11,7 @@ from search_and_chop import chop
 
 
 
-out = str(list(open('./check.txt' , 'r'))[0])
+out = str(list(open('./check.txt' , 'r'))[0]) #should have used open(...).read()
 out = out.split('%%%%%')
 #print(out)
 
@@ -55,3 +55,9 @@ for i in new:
 		fin = fin +'%%%%%'+i
 		
 print(fin[5 : ] , end = '' , file = out)
+
+'''
+#change printing to file to this. this would help remove the %%%%%
+with open('./relativeFilePath' , 'w') as file:
+	file.write('outputText') #only accepts strings
+'''
