@@ -14,13 +14,13 @@ inputFinalKey = ''
 ###########
 
 # output file path
-outfile = open('./output/outputFinal2.txt', 'w')
+outfile = open('./output/outputFinal.txt', 'w')
 
 #PATH TO INPUT ANSWER KEY FILE
-inputkey = list(open('./input/inputKey2.txt', 'r'))
+inputkey = list(open('./input/inputKey.txt', 'r'))
 
 #PATH TO INPUT MARKED ANSWERS FILE
-inputmy = list(open('./input/inputMy2.txt', 'r'))
+inputmy = list(open('./input/inputMy.txt', 'r'))
 
 #PATH TO FINAL ANSWER KEY FILE
 #inputFinalKey = list(open('./input/inputFinalKey.txt', 'r'))
@@ -143,26 +143,30 @@ left = -15
 incorrectInt = 0
 dropped = 0
 for e in range(len(evaluate)):
-	#print(len(evaluate))
+	#print(len(evaluate[e]))
 	#print(evaluate[e])
 	evaluate[e] = evaluate[e].split(' ')
+	if len(evaluate[e]) == 9: tempo, gempo = 5, 8
+	else: tempo, gempo = 3, 6
 	if evaluate[e][2] == 'Not':
 		left += 1
-	elif evaluate[e][3] == evaluate[e][6]:
+	elif evaluate[e][tempo] == evaluate[e][gempo]:
 		score += 4
 		correct += 1
-	elif evaluate[e][3] != evaluate[e][6] and (evaluate[e][6] == 'A' or evaluate[e][6] == 'B' or evaluate[e][6] == 'C' or evaluate[e][6] == 'D'):
+	elif evaluate[e][tempo] != evaluate[e][gempo] and (evaluate[e][gempo] == 'A' or evaluate[e][gempo] == 'B' or evaluate[e][gempo] == 'C' or evaluate[e][gempo] == 'D'):
 		score += -1
 		incorrectObj += 1
 		
-	elif evaluate[e][6] == 'Drop' :
+	elif evaluate[e][gempo] == 'Drop' :
 			dropped += 1
 	
 	#print(type(evaluate[e][2]))
 
 totalDrop = 0
 for e in range(len(evaluate)):
-	if evaluate[e][6] == 'Drop':
+	if len(evaluate[e]) == 9: gempo = 8
+	else: gempo = 6
+	if evaluate[e][gempo] == 'Drop':
 		totalDrop += 1
 	
 #print(evaluate)
