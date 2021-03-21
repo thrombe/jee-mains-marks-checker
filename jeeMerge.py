@@ -1,9 +1,9 @@
-import time
-start = time.time()
+#import time
+#start = time.time()
 
 
 from jeeMyChop import mychop
-#from jeeKeyChop import keychop
+from jeeKeyChop import keychop
 from search_and_chop_adv import chopstr, chopall
 outfile = ''
 inputkey = ''
@@ -14,13 +14,13 @@ inputFinalKey = ''
 ###########
 
 # output file path
-outfile = open('./output/outputFinal.txt', 'w')
+outfile = open('./output/outputFinal2.txt', 'w')
 
 #PATH TO INPUT ANSWER KEY FILE
-inputkey = list(open('./input/inputKey.txt', 'r'))
+inputkey = list(open('./input/inputKey2.txt', 'r'))
 
 #PATH TO INPUT MARKED ANSWERS FILE
-inputmy = list(open('./input/inputMy.txt', 'r'))
+inputmy = list(open('./input/inputMy2.txt', 'r'))
 
 #PATH TO FINAL ANSWER KEY FILE
 #inputFinalKey = list(open('./input/inputFinalKey.txt', 'r'))
@@ -55,13 +55,19 @@ for i in range(len(options)):
 
 
 #NOT FINAL KEY
-#if inputkey:
-#	key = keychop(inputkey)
-inputkey[0] = inputkey[0].replace(' ', '')
-findthis = [ ['uestionNo">', '<', 'line', 0], [ 'nswer">', '<', 'end', 0] ]
-inputkey = chopall(inputkey, findthis)
-key = inputkey
+if inputkey:
+	key = keychop(inputkey)
 
+
+#inputkey = ''.join(inputkey)
+#for i in range(len(inputkey)):
+    #inputkey[i] = inputkey[i].replace(' ', '')
+    #inputkey[i] = inputkey[i].replace('\n', '')
+#findthis = [ ['uestionNo">', '<', 'line', 0], [ 'nswer">', '<', 'end', 0] ]
+#key = chopall(inputkey, findthis)
+#print(key)
+#print((inputkey))
+#print(inputkey.count('uestionNo">'))
 
 #FINAL KEY
 if inputFinalKey:
@@ -88,7 +94,7 @@ marked = mychop(inputmy)
 
 ###
 for k in range(len(key)):
-	key[k] = key[k].split(' ')
+	key[k] = key[k].split(' ans- ')
 	
 	for o in range(len(options)):
 		#print(len(options))
