@@ -14,7 +14,7 @@ inputFinalKey = ''
 ###########
 
 # output file path
-outfile = open('./output/outputFinal.txt', 'w')
+#outfile = open('./output/outputFinal.txt', 'w')
 
 #PATH TO INPUT ANSWER KEY FILE
 inputkey = list(open('./input/inputKey.txt', 'r'))
@@ -23,7 +23,7 @@ inputkey = list(open('./input/inputKey.txt', 'r'))
 inputmy = list(open('./input/inputMy.txt', 'r'))
 
 #PATH TO FINAL ANSWER KEY FILE
-#inputFinalKey = list(open('./input/inputFinalKey.txt', 'r'))
+inputFinalKey = list(open('./input/inputFinalKey.txt', 'r'))
 
 #PATH TO FINAL FINAL KEY
 #inputFinalKey = list(open('./input/inputFinalFinalKey.txt', 'r'))

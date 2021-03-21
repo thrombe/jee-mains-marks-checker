@@ -7,7 +7,7 @@ the jee mains 2021 answer key was very annoying to check manually, so i made thi
 2. Save HTML of RESPONSE_SHEET as inputMy.txt inside input folder.
 - OR    Save the text of the final answer key from the pdf into inputFinalKey.txt inside input folder
 
-3. run python jeeMerge.py
+3. run python JEEall.py
 
 4. the printed output is also saved in the output folder
 
