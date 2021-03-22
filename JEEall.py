@@ -1,3 +1,5 @@
+#import time
+#start = time.time()
 
 from search_and_chop_adv import chopall
 outfile, inputKey, inputFinalKey = '', '', ''
@@ -63,17 +65,30 @@ for my in inputMy:
 			if key[1] == 'Drop': # decide what happened to the questions
 				if key[2] == 'integer': droppedInt += 1
 				else: droppedObj += 1
-				if my[2] != 'not found' or my[3] != 'not found': droppedButAttempted += 1
-			elif my[1] == 'Not Answered': left += 1
-			elif key[2] == my[2]: correctObj += 1
-			elif key[1] == my[3]: correctInt += 1
-			elif key[2] == 'integer': incorrectInt += 1
-			elif key[2] != 'integer': incorrectObj += 1
+				my.append('-')
+				if my[2] != 'not found' or my[3] != 'not found':
+				    droppedButAttempted += 1
+				    my[8] = 'considered correct'
+			elif my[1] == 'Not Answered':
+			    left += 1
+			    my.append('-')
+			elif key[2] == my[2]:
+			    correctObj += 1
+			    my.append('correct')
+			elif key[1] == my[3]:
+			    correctInt += 1
+			    my.append('correct')
+			elif key[2] == 'integer':
+			    incorrectInt += 1
+			    my.append('incorrect')
+			elif key[2] != 'integer':
+			    incorrectObj += 1
+			    my.append('incorrect')
 			
 			num += 1
 			if key[2] == 'integer': key[2], key[1], my[2] = key[1], 'No key ID', 'NA'
 			else: my[3] = 'NA'
-			evaluate['Q'+str(num)] = { 'QID' : my[0], 'keyID' : key[1], 'key' : key[2], 'status' : my[1], 'markedObj' : my[2], 'markedInt' : my[3] }
+			evaluate['Q'+str(num)] = { 'QID' : my[0], 'keyID' : key[1], 'key' : key[2], 'status' : my[1], 'markedObj' : my[2], 'markedInt' : my[3], 'result' : my[8] }
 			break
 score = 4*(correctObj + correctInt + droppedButAttempted) + (-1)*incorrectObj
 
@@ -90,3 +105,5 @@ for q, p in evaluate.items(): # printing all question details
 # print stats
 printie = [ 'SCORE: '+str(score), 'CORRECT OBJ: '+str(correctObj), 'CORRECT INT: '+str(correctInt), 'INCORRECT OBJ: '+str(incorrectObj), 'INCORRECT INT: '+str(incorrectInt), 'LEFT: '+str(left), 'DROPPED OBJ: '+str(droppedObj), 'DROPPED INT: '+str(droppedInt), 'DROPPED BUT ATTEMPTED: '+str(droppedButAttempted) , 'dropped questions are added to score(if attempted) but not to "correct" or "incorrect" '  ]
 for item in printie: printy(item)
+
+#print(str(time.time()-start))
